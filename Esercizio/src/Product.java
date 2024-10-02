@@ -2,12 +2,13 @@ import java.util.Random;
 
 public class Product {
     Random random = new Random();
-    private long id = random.nextLong(1000,10000);
+    private long id;
     private String name;
     private Categories category;
     private double price;
 
     public Product(String name, Categories category, double price){
+        this.id = random.nextLong(1000,10000);
         this.name = name;
         this.category = category;
         this.price = price;

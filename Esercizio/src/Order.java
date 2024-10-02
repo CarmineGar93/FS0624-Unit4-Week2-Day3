@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Order {
     Random random = new Random();
-    private long id = random.nextLong(1000,10000);
+    private long id;
     private String status;
     private LocalDate orderDate;
     private LocalDate deliveryDate;
@@ -13,6 +13,7 @@ public class Order {
     private Customer customer;
 
     public Order(List<Product> products, Customer customer) {
+        this.id = random.nextLong(1000,10000);
         this.products = products;
         this.customer = customer;
         this.status = "in progress";

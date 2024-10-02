@@ -2,11 +2,12 @@ import java.util.Random;
 
 public class Customer {
     Random random = new Random();
-    private long id = random.nextLong(1000,10000);
+    private long id;
     private String name;
     private int tier;
 
     public Customer(String name, int tier) {
+        this.id = random.nextLong(1000,10000);
         this.name = name;
         this.tier = tier;
     }
