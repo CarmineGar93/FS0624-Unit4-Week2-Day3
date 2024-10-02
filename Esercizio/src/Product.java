@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Product {
+public class Product implements Cloneable {
     Random random = new Random();
     private long id;
     private String name;
@@ -53,5 +53,16 @@ public class Product {
                 ", price=" + price +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public Product clone() {
+        try {
+            Product clone = (Product) super.clone();
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

@@ -1,11 +1,7 @@
 import com.github.javafaker.Faker;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
-import java.util.function.Supplier;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -47,7 +43,11 @@ public class Main {
         List<Order> babyOrder = allOrders.stream().filter(order -> order.getProducts().stream().anyMatch(product -> product.getCategory() == Categories.BABY)).toList();
         babyOrder.forEach(System.out::println);
         System.out.println("----------------------Boys 10%--------------------");
-        List<Product> boysDiscount = allProducts.stream().filter(product -> product.getCategory() == Categories.BOYS).peek(product -> product.setPrice(product.getPrice()*((double) 9 /10))).toList();
+        List<Product> boysDiscount = allProducts.stream().filter(product -> product.getCategory() == Categories.BOYS).map(product -> {
+            Product scontato = product.clone();
+            scontato.setPrice(product.getPrice()*0.9);
+            return scontato;
+        }).toList();
         boysDiscount.forEach(System.out::println);
         System.out.println("----------------------Tier 2 Old--------------------");
         HashSet<Product> tier2OldProduct = new HashSet<>();
