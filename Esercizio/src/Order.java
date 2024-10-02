@@ -16,8 +16,8 @@ public class Order {
         this.products = products;
         this.customer = customer;
         this.status = "in progress";
-        this.orderDate = LocalDate.now();
-        this.deliveryDate = LocalDate.now().plusDays(random.nextInt(1,20));
+        this.orderDate = LocalDate.of(2021, random.nextInt(1,12), random.nextInt(1, 30));
+        this.deliveryDate = orderDate.plusDays(random.nextInt(1,20));
     }
 
     public long getId() {
