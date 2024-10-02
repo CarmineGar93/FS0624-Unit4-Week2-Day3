@@ -20,9 +20,11 @@ public class Main {
                 case 5 -> Categories.ELECTRONIC;
                 default -> Categories.JEWELRY;
             };
-            allProducts.add(new Product(faker.commerce().productName(),category,Integer.parseInt(faker.commerce().price())));
+            allProducts.add(new Product(faker.pokemon().name(),category,ran.nextDouble(20, 300)));
         }
         System.out.println(allProducts);
+        List<Product> expensiveBooks = allProducts.stream().filter(product -> product.getCategory() == Categories.BOOK && product.getPrice() > 100).toList();
+        System.out.println(expensiveBooks);
 
     }
 
