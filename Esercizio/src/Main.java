@@ -54,7 +54,7 @@ public class Main {
         allOrders.stream()
                 .filter(order -> order.getCustomer().getTier() == 2 && order.getOrderDate()
                         .isAfter(LocalDate.of(2021,2,1)) && order.getOrderDate().isBefore(LocalDate.of(2021,4,1)))
-                .map(Order::getProducts).forEach(products -> products.stream().forEach(product -> tier2OldProduct.add(product)));
+                .map(Order::getProducts).forEach(products -> tier2OldProduct.addAll(products));
         tier2OldProduct.forEach(System.out::println);
     }
 
