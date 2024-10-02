@@ -52,8 +52,8 @@ public class Main {
         HashSet<Product> tier2OldProduct = new HashSet<>();
         allOrders.stream()
                 .filter(order -> order.getCustomer().getTier() == 2 && order.getOrderDate()
-                        .isAfter(LocalDate.of(2021,2,1)))
-                .map(order -> order.getProducts()).forEach(products -> products.stream().forEach(product -> tier2OldProduct.add(product)));
+                        .isAfter(LocalDate.of(2021,2,1)) && order.getOrderDate().isBefore(LocalDate.of(2021,4,1)))
+                .map(Order::getProducts).forEach(products -> products.stream().forEach(product -> tier2OldProduct.add(product)));
         tier2OldProduct.forEach(System.out::println);
     }
 
