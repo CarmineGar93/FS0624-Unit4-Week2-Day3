@@ -51,4 +51,13 @@ public class Order {
     public void setProducts(Product product) {
         this.products.add(product);
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "deliveryDate=" + deliveryDate +
+                ", products=" + products +
+                ", customer=" + customer +
+                '}';
+    }
 }
