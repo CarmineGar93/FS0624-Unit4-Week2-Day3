@@ -1,5 +1,8 @@
 public enum Categories {
     BABY,
     BOYS,
-    GIRLS,
+    BOOK,
+    ELECTRONIC,
+    FOOD,
+    JEWELRY
 }
