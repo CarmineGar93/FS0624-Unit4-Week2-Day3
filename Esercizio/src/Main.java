@@ -29,16 +29,17 @@ public class Main {
             allCustomers.add(new Customer(faker.harryPotter().character(), ran.nextInt(1,5)));
         }
         List<Order> allOrders = new ArrayList<>();
-        for (int i = 0; i < 50; i++){
+        for (int i = 0; i < 20; i++){
             List<Product> productsOrdered = new ArrayList<>();
             for (int j = 0; j < ran.nextInt(1,5); j++) {
                 productsOrdered.add(allProducts.get(ran.nextInt(0, allProducts.size() - 1)));
             }
             allOrders.add(new Order(productsOrdered, allCustomers.get(ran.nextInt(0, allCustomers.size() - 1))));
         }
-        System.out.println(allCustomers);
-        System.out.println(allOrders);
-        System.out.println(allProducts);
+        System.out.println("---------------------Products-----------------------------");
+        allProducts.forEach(System.out::println);
+        System.out.println("---------------------Orders-----------------------------");
+        allOrders.forEach(System.out::println);
         System.out.println("-----------------Expensive books--------------------");
         List<Product> expensiveBooks = allProducts.stream().filter(product -> product.getCategory() == Categories.BOOK && product.getPrice() > 100).toList();
         expensiveBooks.forEach(System.out::println);
