@@ -2,6 +2,7 @@ import com.github.javafaker.Faker;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -50,11 +51,15 @@ public class Main {
         }).toList();
         boysDiscount.forEach(System.out::println);
         System.out.println("----------------------Tier 2 Old--------------------");
-        HashSet<Product> tier2OldProduct = new HashSet<>();
+        /*HashSet<Product> tier2OldProduct = new HashSet<>();
         allOrders.stream()
                 .filter(order -> order.getCustomer().getTier() == 2 && order.getOrderDate()
                         .isAfter(LocalDate.of(2021,2,1)) && order.getOrderDate().isBefore(LocalDate.of(2021,4,1)))
-                .map(Order::getProducts).forEach(products -> tier2OldProduct.addAll(products));
+                .map(Order::getProducts).forEach(products -> tier2OldProduct.addAll(products));*/
+        Set<Product> tier2OldProduct = allOrders.stream()
+                .filter(order -> order.getCustomer().getTier() == 2 && order.getOrderDate()
+                        .isAfter(LocalDate.of(2021,2,1)) && order.getOrderDate().isBefore(LocalDate.of(2021,4,1)))
+                        .flatMap(order -> order.getProducts().stream()).collect(Collectors.toSet());
         tier2OldProduct.forEach(System.out::println);
     }
 
